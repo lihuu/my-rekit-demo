@@ -1,3 +1,10 @@
+/*
+ * @Author: lihu
+ * @Date: 2019-08-11 12:16:58
+ * @LastEditors: lihu
+ * @LastEditTime: 2021-04-08 22:06:59
+ * @FilePath: \my-rekit-app\src\features\examples\CounterPage.js
+ */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
@@ -15,11 +22,17 @@ export class CounterPage extends Component {
       <div className="examples-counter-page">
         <h1>Counter</h1>
         <p>This is simple counter demo to show how Redux sync actions work.</p>
-        <button className="btn-minus-one" onClick={this.props.actions.counterMinusOne} disabled={this.props.examples.count === 0}>
+        <button
+          className="btn-minus-one"
+          onClick={this.props.actions.counterMinusOne}
+          disabled={this.props.examples.count === 0}
+        >
           -
         </button>
         <span>{this.props.examples.count}</span>
-        <button className="btn-plus-one" onClick={this.props.actions.counterPlusOne}>+</button>
+        <button className="btn-plus-one" onClick={this.props.actions.counterPlusOne}>
+          +
+        </button>
         <button className="btn-reset" onClick={this.props.actions.counterReset}>
           Reset
         </button>
@@ -29,6 +42,7 @@ export class CounterPage extends Component {
 }
 
 /* istanbul ignore next */
+//state的中的数据和当前主键绑定
 function mapStateToProps(state) {
   return {
     examples: state.examples,
@@ -42,4 +56,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CounterPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CounterPage);
